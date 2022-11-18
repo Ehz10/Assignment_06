@@ -6,9 +6,6 @@
 # Tiago Rodrigues, 2022-Nov-17. Updateed File
 #------------------------------------------#
 
-# change the TODO word to TODone
-# using the break function make the code faster for example if we are iterating a list withouth duplicated id's at the time the program find the first id searched it will stop
-
 # -- DATA -- #
 strChoice = '' # User input
 lstTbl = []  # list of lists to hold data
