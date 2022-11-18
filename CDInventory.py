@@ -52,14 +52,17 @@ class FileProcessor:
         Returns:
             None.
         """
-        table.clear()  # this clears existing data and allows to load data from file
-        objFile = open(file_name, 'r')
-        for line in objFile:
-            data = line.strip().split(',')
-            dicRow = {'ID': int(data[0]), 'Title': data[1], 'Artist': data[2]}
-            table.append(dicRow)
-        objFile.close()
-
+        try:
+            table.clear()  # this clears existing data and allows to load data from file
+            objFile = open(file_name, 'r')
+            for line in objFile:
+                data = line.strip().split(',')
+                dicRow = {'ID': int(data[0]), 'Title': data[1], 'Artist': data[2]}
+                table.append(dicRow)
+            objFile.close()
+        except:
+            print('The file {} doesn\'t exist'.format(strFileName))
+            
     @staticmethod
     def write_file(file_name, table):
         lstRow = []
@@ -160,8 +163,10 @@ class IO:
         
     
 # 1. When program starts, read in the currently saved Inventory
-FileProcessor.read_file(strFileName, lstTbl)
-
+try:
+    FileProcessor.read_file(strFileName, lstTbl)
+except:
+    print('The file {} doesn\'t exist'.format(strFileName))
 
 # 2. start main loop
 while True:
